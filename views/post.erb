@@ -1,0 +1,11 @@
+<H2><%= @posts["title"] %></H2>
+<p>Language: <%= @posts["language"] %></p>
+<p>Upvotes: <%= @posts["upvotes"] %></p>
+<p><%= @posts["body"] %></p>
+<p>Posted by: <%= @posts["user_id"] %></p>
+<H3>Responses</H3>
+<% @comments.each do |entry| %>
+  <p><%= "#{entry["body"]}" %></p>
+  <p>Posted by: <%= "#{entry["user_id"]}" %></p>
+<% end %>
+

@@ -1,0 +1,8 @@
+<H2>Latest Posts</H2>
+
+<% @posts.each do |entry| %>
+  <p>
+  <a href="/posts/<%=entry["id"]%>">
+  <%= "#{entry["title"]}</a>" %>
+  </p>
+<% end %>

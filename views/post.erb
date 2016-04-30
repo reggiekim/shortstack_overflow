@@ -3,6 +3,17 @@
 <p>Upvotes: <%= @posts["upvotes"] %></p>
 <p><%= @posts["body"] %></p>
 <p>Posted by: <%= @posts["user_id"] %></p>
+
+<H3>Got an answer?</H3>
+<form action='/comments' method='POST'>
+  <input type="hidden" name="post_id" value="<%= @posts["id"] %>" />
+  <label>Your comment:</label><br>
+  <textarea name='body'></textarea><br>
+  <label>Your user#:</label><br>
+  <input name='user_id'><br>
+  <button>Submit</button>
+</form>
+
 <H3>Responses</H3>
 <% @comments.each do |entry| %>
   <p><%= "#{entry["body"]}" %></p>

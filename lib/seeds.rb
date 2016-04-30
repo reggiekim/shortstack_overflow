@@ -50,3 +50,4 @@ db.exec("CREATE TABLE comments(
 db.exec("INSERT INTO users (fname, lname, email, password, avatar) VALUES ('Reggie','Kim','reggiekim@gmail.com','p4ssword','someavatar')")
 db.exec("INSERT INTO posts (title, body, language, upvotes, user_id) VALUES ('What is console.log?','I saw this line of code in my friends project and I have no idea what it does. What does console.log mean?','JavaScipt',0,1)")
 db.exec("INSERT INTO comments (body, upvotes, post_id, user_id) VALUES ('A javascript debugging tool that lets you print to the console',0,1,1)")
+db.exec("INSERT INTO comments (body, upvotes, post_id, user_id) VALUES ('and it doesnt render on the browser view',0,1,1)")

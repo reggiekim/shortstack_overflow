@@ -14,14 +14,26 @@
       <textarea name='body'></textarea><br>
       <label>Your user#:</label><br>
       <input name='user_id' type='text'><br>
-      <button>Submit</button>
+      <button class="button-primary">Submit Answer</button>
     </form>
   </div>
   <div class="comments">
     <H3>Responses</H3>
-    <% @comments.each do |entry| %>
-      <p><%= "#{entry["body"]}" %></p>
-      <p>Posted by: <%= "#{entry["user_id"]}" %></p>
-    <% end %>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Answer</th>
+          <th>Posted by</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |entry| %>
+          <tr>
+            <td><%= "#{entry["body"]}" %></td>
+            <td><%= "#{entry["user_id"]}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

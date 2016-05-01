@@ -45,10 +45,9 @@ module Sinatra
       ).first
 
       if @user && BCrypt::Password::new(@user["password"]) == params[:password]
-        "You have successfully logged in"
-        session[:user_id] = @user["id"]
+        redirect "/posts"
       else
-        "Incorrect email or password!"
+        "Incorrect email or password, please go back and try again!"
       end
     end
 

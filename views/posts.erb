@@ -17,17 +17,32 @@
       <textarea name='body'></textarea><br>
       <label>Your user#:</label><br>
       <input name='user_id' type='text'><br>
-      <button class='button-primary'>Submit</button>
+      <button class='button-primary'>Submit Question</button>
     </form>
   </div>
   <div class="all-posts">
-    <H2>Latest Posts</H2>
-    <% @posts.each do |entry| %>
-      <p>
-      <a href="/posts/<%=entry["id"]%>">
-      <%= "#{entry["title"]}" %></a>
-      </p>
-    <% end %>
+    <H2>Popular Posts</H2>
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th>Upvotes</th>
+          <th>Question</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |entry| %>
+          <tr>
+            <td><%= "#{entry["upvotes"]}" %></td>
+            <td>
+              <a href="/posts/<%=entry["id"]%>">
+              <%= "#{entry["title"]}" %></a>
+            </td>
+            <td><%= "#{entry["comment_counter"]}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

@@ -1,10 +1,10 @@
 .header {
   background-color: #222;
   color: white;
-  height: 100px;
+  max-height: 10%;
 }
 
-.title-main {
+#title-main {
   text-decoration: none;
 }
 
@@ -36,14 +36,23 @@ li a:hover {
 }
 
 .welcome {
-  height: 350px;
+  height: 475px;
   background-color: #33C3F0;
   color: white;
   text-align: center;
 }
 
 .welcome-text {
-  padding-top: 100px;
+  padding-top: 125px;
+}
+
+#sub-title {
+  font-size: 15pt;
+}
+
+#get-started {
+  background-color: white;
+  top: 300px;
 }
 
 .row {
@@ -53,9 +62,11 @@ li a:hover {
 .footer {
   background-color: #222;
   color: white;
-  height: 200px;
+  max-height: 15%;
   padding-left: 50px;
 }
 
-
+.main-container {
+  padding-top: 30px;
+}
 

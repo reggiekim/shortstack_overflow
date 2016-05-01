@@ -1,0 +1,61 @@
+.header {
+  background-color: #222;
+  color: white;
+  height: 100px;
+}
+
+.title-main {
+  text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.six.columns {
+  text-align: center;
+}
+
+.welcome {
+  height: 350px;
+  background-color: #33C3F0;
+  color: white;
+  text-align: center;
+}
+
+.welcome-text {
+  padding-top: 100px;
+}
+
+.row {
+  padding-top: 30px;
+}
+
+.footer {
+  background-color: #222;
+  color: white;
+  height: 200px;
+  padding-left: 50px;
+}
+
+
+

@@ -1,5 +1,48 @@
-<H2>Welcome to ShortstackOverflow</H2>
-<p>Ask simple programming questions, get simple programming answers.</p>
-
+<div class="main-container">
+  <div class="welcome">
+    <div class="welcome-text">
+      <H2>Welcome to ShortstackOverflow</H2>
+      <p>Ask simple programming questions, get simple programming answers.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="one-third column">
+      <h3>Log in</h3>
+      <p>Welcome back!</p>
+      <form class="signup" action="/login" method="post">
+        <label for="email">Email: </label>
+        <input name="email" type="text" />
+        <br />
+        <label for="password">Password: </label>
+        <input name="password" type="password" />
+        <br />
+        <input type="submit" value="Log In" class="button-primary"/>
+      </form>
+    </div>
+    <div class="one-third column">
+      <h3>Sign up</h3>
+      <p>With an account, you can ask questions, help others, and give upvotes!</p>
+      <form class="signup" action="/signup" method="post">
+        <label for="fname">First Name: </label>
+        <input name="fname" type="text" />
+        <label for="lname">Last Name: </label>
+        <input name="lname" type="text" />
+        <br />
+        <label for="email">Email: </label>
+        <input name="email" type="text" />
+        <br />
+        <label for="password">Password: </label>
+        <input name="password" type="password" />
+        <br />
+        <input type="submit" value="Sign Up" class="button-primary"/>
+      </form>
+      </div>
+      <div class="one-third column">
+      <h3>Or Just Browse</h3>
+      <p>Look up questions and read discussions</p>
+      <a class="button button-primary" href="/posts">View posts</a>
+      </div>
+  </div>
+</div>
 
 

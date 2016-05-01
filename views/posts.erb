@@ -1,28 +1,33 @@
-<H2>Got a question?</H2>
-<form action='/posts' method='POST'>
-  <label>Title:</label><br>
-  <input name='title'><br>
-  <label>Programming Language:</label><br>
-  <select name='language' size="1">
-    <option>
-    <option>HTML
-    <option>CSS
-    <option>JavaScript
-    <option>Ruby
-    <option>Other
-  </select><br>
-  <label>Your question:</label><br>
-  <textarea name='body'></textarea><br>
-  <label>Your user#:</label><br>
-  <input name='user_id'><br>
-  <button>Submit</button>
-</form>
-
-<H2>Latest Posts</H2>
-<% @posts.each do |entry| %>
-  <p>
-  <a href="/posts/<%=entry["id"]%>">
-  <%= "#{entry["title"]}</a>" %>
-  </p>
-<% end %>
+<div class="main-container">
+  <div class="question">
+    <H2>Got a question?</H2>
+    <form action='/posts' method='POST'>
+      <label>Title:</label><br>
+      <input name='title' type='text'><br>
+      <label>Programming Language:</label><br>
+      <select name='language' size="1">
+        <option></option>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>JavaScript</option>
+        <option>Ruby</option>
+        <option>Other</option>
+      </select><br>
+      <label>Your question:</label><br>
+      <textarea name='body'></textarea><br>
+      <label>Your user#:</label><br>
+      <input name='user_id' type='text'><br>
+      <button class='button-primary'>Submit</button>
+    </form>
+  </div>
+  <div class="all-posts">
+    <H2>Latest Posts</H2>
+    <% @posts.each do |entry| %>
+      <p>
+      <a href="/posts/<%=entry["id"]%>">
+      <%= "#{entry["title"]}" %></a>
+      </p>
+    <% end %>
+  </div>
+</div>
 

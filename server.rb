@@ -1,5 +1,18 @@
 module Sinatra
+  require "bcrypt"
   class Server < Sinatra::Base
+    enable :sessions
+
+    def current_user
+      @current_user ||= db.exec_params(
+       "SELECT * FROM users WHERE id=$1 LIMIT 1",
+       [session[:user_id]]
+     ).first
+    end
+
+    def logged_in?
+      current_user
+    end
 
     def db
       if ENV["RACK_ENV"] == "production"
@@ -15,8 +28,43 @@ module Sinatra
     end
 
     get "/" do
-      erb :index
+      if logged_in?
+        erb :posts
+      else
+        erb :index
+      end
     end
+
+    post "/login" do
+      @email = params[:email]
+      @password = params[:password]
+
+      @user = db.exec_params(
+        "SELECT * FROM users WHERE email=$1 LIMIT 1",
+        [@email]
+      ).first
+
+      if @user && BCrypt::Password::new(@user["password"]) == params[:password]
+        "You have successfully logged in"
+        session[:user_id] = @user["id"]
+      else
+        "Incorrect email or password!"
+      end
+    end
+
+    post "/signup" do
+      @fname = params["lname"]
+      @lname = params["fname"]
+      @email = params["email"]
+      @password = BCrypt::Password::create(params[:password])
+
+      db.exec_params(
+        "INSERT INTO users (fname, lname, email, password, avatar) VALUES ($1,$2,$3,$4,$5)", [@fname, @lname, @email, @password, 'someavatar'])
+
+      redirect "/posts"
+    end
+
+
 
     get "/posts" do
       @posts = db.exec("SELECT * FROM posts ORDER BY upvotes DESC")
@@ -55,6 +103,7 @@ module Sinatra
     get "/login" do
       erb :login
     end
+
 
   end
 end

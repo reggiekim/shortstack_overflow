@@ -1,23 +1,36 @@
 <!doctype html>
 <html>
 <head>
+  <link href="/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="/css/skeleton.css" rel="stylesheet" type="text/css">
   <link href="/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <H1>ShortstackOverflow</H1>
-      <ul class="main_navigation">
-        <li><a href="/">Home</a></li>
-        <li><a href="/posts">View Posts</a></li>
-        <li><a href="/login">Log In</a></li>
-        <li><a href="/signup">Sign Up</a></li>
-      </ul>
+      <div class="row">
+        <div class="six columns">
+          <H1><a class="title-main" href="/">ShortstackOverflow</a></H1>
+        </div>
+        <div class="six columns">
+          <ul class="main_navigation">
+            <li><a href="/login">Log In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+            <li><a href="/posts">View Posts</a></li>
+         </ul>
+        </div>
+      </div>
     </div>
     <%= yield %>
     <div class="footer">
-      <hr>
-      <p>2016 Shortstack Overflow, llc</p>
+      <div class="row">
+        <div class="three columns">
+          <a href="https://generalassemb.ly/"><img class="ga-logo" src="/img/ga_logo.png"></a>
+        </div>
+        <div class="nine columns">
+          <p>2016 Shortstack Overflow<br>by Reggie Kim<br>at General Assembly NY</p>
+        </div>
+      </div>
     </div>
   </div>
 </body>

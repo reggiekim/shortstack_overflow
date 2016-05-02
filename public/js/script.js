@@ -7,5 +7,12 @@ $("#get-started").click(function() {
     }, 700);
 });
 //got this from: http://stackoverflow.com/questions/19012495/smooth-scroll-to-div-id-jquery
+$("#scroll-top").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".header").offset().top
+    }, 700);
+});
+
+
 
 })();

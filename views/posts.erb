@@ -1,27 +1,35 @@
 <div class="main-container">
   <div class="question">
-    <H2>Got a question?</H2>
+    <H3>Got a question?</H3>
     <form action='/posts' method='POST'>
-      <label>Title:</label><br>
-      <input name='title' type='text'><br>
-      <label>Programming Language:</label><br>
-      <select name='language' size="1">
-        <option></option>
-        <option>HTML</option>
-        <option>CSS</option>
-        <option>JavaScript</option>
-        <option>Ruby</option>
-        <option>Other</option>
-      </select><br>
+      <div class="row">
+        <div class="one-third column">
+          <label>Title:</label><br>
+          <input name='title' type='text'><br>
+        </div>
+        <div class="one-third column">
+          <label>Programming Language:</label><br>
+          <select name='language' size="1">
+            <option></option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+            <option>Ruby</option>
+            <option>Other</option>
+          </select><br>
+        </div>
+        <div class="one-third column">
+          <label>Your name:</label><br>
+          <input name='user_name' type='text'><br>
+        </div>
+      </div>
       <label>Your question:</label><br>
-      <textarea name='body'></textarea><br>
-      <label>Your user#:</label><br>
-      <input name='user_id' type='text'><br>
+      <textarea name='body' id="textarea"></textarea><br>
       <button class='button-primary'>Submit Question</button>
     </form>
   </div>
   <div class="all-posts">
-    <H2>Popular Posts</H2>
+    <H3>Popular Posts</H3>
     <table class="u-full-width">
       <thead>
         <tr>
@@ -33,12 +41,12 @@
       <tbody>
         <% @posts.each do |entry| %>
           <tr>
-            <td><%= "#{entry["upvotes"]}" %></td>
+            <td><%= "#{entry["upvotes"]}" %> <img src="/img/uparrow.png" id="uparrow"></td>
             <td>
               <a href="/posts/<%=entry["id"]%>">
               <%= "#{entry["title"]}" %></a>
             </td>
-            <td><%= "#{entry["comment_counter"]}" %></td>
+
           </tr>
         <% end %>
       </tbody>

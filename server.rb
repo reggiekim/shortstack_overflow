@@ -47,23 +47,21 @@ module Sinatra
       if @user && BCrypt::Password::new(@user["password"]) == params[:password]
         redirect "/posts"
       else
-        "Incorrect email or password, please go back and try again!"
+        redirect "/tryagain"
       end
     end
 
     post "/signup" do
-      @fname = params["lname"]
-      @lname = params["fname"]
+      @fname = params["fname"]
+      @lname = params["lname"]
       @email = params["email"]
       @password = BCrypt::Password::create(params[:password])
 
       db.exec_params(
-        "INSERT INTO users (fname, lname, email, password, avatar) VALUES ($1,$2,$3,$4,$5)", [@fname, @lname, @email, @password, 'someavatar'])
+        "INSERT INTO users (fname, lname, email, password) VALUES ($1,$2,$3,$4)", [@fname, @lname, @email, @password])
 
       redirect "/posts"
     end
-
-
 
     get "/posts" do
       @posts = db.exec("SELECT * FROM posts ORDER BY upvotes DESC")
@@ -74,8 +72,8 @@ module Sinatra
       @title = params["title"]
       @body = params["body"]
       @language = params["language"]
-      @user_id = params["user_id"]
-      db.exec_params("INSERT INTO posts (title, body, language, upvotes, user_id) VALUES ($1, $2, $3, $4, $5)",[@title, @body, @language, 0, @user_id])
+      @user_name = params["user_name"]
+      db.exec_params("INSERT INTO posts (title, body, language, upvotes, user_name) VALUES ($1, $2, $3, $4, $5)",[@title, @body, @language, 0, @user_name])
       redirect to ('/posts')
     end
 
@@ -89,9 +87,9 @@ module Sinatra
     post "/comments" do
       @body = params["body"]
       @post_id = params["post_id"]
-      @user_id = params["user_id"]
+      @user_name = params["user_name"]
 
-      db.exec_params("INSERT INTO comments (body, upvotes, post_id, user_id) VALUES ($1, $2, $3, $4)",[@body, 0, @post_id, @user_id])
+      db.exec_params("INSERT INTO comments (body, upvotes, post_id, user_name) VALUES ($1, $2, $3, $4)",[@body, 0, @post_id, @user_name])
       redirect "/posts/#{@post_id}"
     end
 
@@ -101,6 +99,10 @@ module Sinatra
 
     get "/login" do
       erb :login
+    end
+
+    get "/tryagain" do
+      erb :wrong
     end
 
 

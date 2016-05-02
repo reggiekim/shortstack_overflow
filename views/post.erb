@@ -1,19 +1,20 @@
 <div class="main-container">
-  <div class="each-post"
-    <H2><%= @posts["title"] %></H2>
+  <div class="each-post">
+    <H3><%= @posts["title"] %></H3>
+    <p><em><%= @posts["user_name"] %> wants to know...</em></p>
+    <hr>
+    <p><strong><%= @posts["body"] %></strong></p>
+    <hr>
     <p>Language: <%= @posts["language"] %></p>
-    <p>Upvotes: <%= @posts["upvotes"] %></p>
-    <p><%= @posts["body"] %></p>
-    <p>Posted by: <%= @posts["user_id"] %></p>
   </div>
   <div class="answer">
     <H3>Got an answer?</H3>
     <form action='/comments' method='POST'>
       <input type="hidden" name="post_id" value="<%= @posts["id"] %>" />
-      <label>Your comment:</label><br>
-      <textarea name='body'></textarea><br>
-      <label>Your user#:</label><br>
-      <input name='user_id' type='text'><br>
+      <label>Your name:</label><br>
+      <input name='user_name' type='text'><br>
+      <label>Your answer:</label><br>
+      <textarea name='body' id="textarea"></textarea><br>
       <button class="button-primary">Submit Answer</button>
     </form>
   </div>
@@ -30,7 +31,7 @@
         <% @comments.each do |entry| %>
           <tr>
             <td><%= "#{entry["body"]}" %></td>
-            <td><%= "#{entry["user_id"]}" %></td>
+            <td><%= "#{entry["user_name"]}" %></td>
           </tr>
         <% end %>
       </tbody>

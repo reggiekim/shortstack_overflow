@@ -2,6 +2,7 @@ module Sinatra
   require "bcrypt"
   class Server < Sinatra::Base
     enable :sessions
+    set :method_override, true
 
     def current_user
       @current_user ||= db.exec_params(
@@ -74,6 +75,14 @@ module Sinatra
       @language = params["language"]
       @user_name = params["user_name"]
       db.exec_params("INSERT INTO posts (title, body, language, upvotes, user_name) VALUES ($1, $2, $3, $4, $5)",[@title, @body, @language, 0, @user_name])
+      redirect to ('/posts')
+    end
+
+    put "/posts" do
+      @id = params["post_id"].to_i
+      @upvotes = params["current-upvotes"].to_i + 1
+      db.exec_params("UPDATE posts SET upvotes = $1 WHERE id=$2", [@upvotes, @id])
+
       redirect to ('/posts')
     end
 

@@ -30,6 +30,7 @@ db.exec("CREATE TABLE posts(
     body TEXT,
     language VARCHAR,
     upvotes INTEGER,
+    comment_count INTEGER,
     user_name VARCHAR
   )"
 )

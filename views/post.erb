@@ -10,9 +10,11 @@
   <div class="answer">
     <H3>Got an answer?</H3>
     <form action='/comments' method='POST'>
+      <input type='hidden' name='_method' value='PUT'>
+      <input type="hidden" name="current-comments" value="<%= @posts["comment_count"] %>" />
       <input type="hidden" name="post_id" value="<%= @posts["id"] %>" />
       <label>Your name:</label><br>
-      <input name='user_name' type='text'><br>
+      <input name='user_name' type='text' maxlength="25"><br>
       <label>Your answer:</label><br>
       <textarea name='body' id="textarea"></textarea><br>
       <button class="button-primary">Submit Answer</button>

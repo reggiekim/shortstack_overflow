@@ -74,7 +74,7 @@ module Sinatra
       @body = params["body"]
       @language = params["language"]
       @user_name = params["user_name"]
-      db.exec_params("INSERT INTO posts (title, body, language, upvotes, user_name) VALUES ($1, $2, $3, $4, $5)",[@title, @body, @language, 0, @user_name])
+      db.exec_params("INSERT INTO posts (title, body, language, upvotes, comment_count, user_name) VALUES ($1, $2, $3, $4, $5, $6)",[@title, @body, @language, 0, 0, @user_name])
       redirect to ('/posts')
     end
 
@@ -100,6 +100,19 @@ module Sinatra
 
       db.exec_params("INSERT INTO comments (body, upvotes, post_id, user_name) VALUES ($1, $2, $3, $4)",[@body, 0, @post_id, @user_name])
       redirect "/posts/#{@post_id}"
+    end
+
+    put "/comments" do
+      @id = params["post_id"].to_i
+      @comments = params["current-comments"].to_i + 1
+      db.exec_params("UPDATE posts SET comment_count = $1 WHERE id=$2", [@comments, @id])
+
+      @body = params["body"]
+      @post_id = params["post_id"]
+      @user_name = params["user_name"]
+      db.exec_params("INSERT INTO comments (body, upvotes, post_id, user_name) VALUES ($1, $2, $3, $4)",[@body, 0, @post_id, @user_name])
+
+      redirect "/posts/#{@id}"
     end
 
     get "/signup" do

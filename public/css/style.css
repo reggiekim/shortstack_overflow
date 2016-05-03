@@ -97,3 +97,7 @@ li a {
 #upvote-col {
   width: 50px;
 }
+
+#scroll-top {
+  cursor: pointer;
+}

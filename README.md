@@ -1,11 +1,12 @@
 #ShortstackOverflow
+###by Reggie Kim
 
 http://shortstack-overflow.herokuapp.com/
 
 ##Description
 ShortstackOverflow is a beginner's alternative to Stack Overflow, where programmers can ask very basic questions and get easy to understand answers.  No assholes allowed, humor is recommended.
 
-With ShortstackOverflow (SO), you can read other people's questions and answers.  You can also see how many upvotes or comments each post has.  If you want to ask questions, you have to sign up with SO.  Once you register, you can also vote on questions you like and think that might be helpful to others.
+With ShortstackOverflow (SO), you can read other people's questions and answers.  You can also see how many upvotes or comments each post has.  If you want to ask questions, you have to sign up with SO.  Once you register, you can also vote on questions you think that might be helpful to others.
 
 ##Techlogies used
 * Sinatra - used for routing
